@@ -12,7 +12,7 @@ If you need some of these points, then this framework is for you:
 
 <div class="tip custom-block" style="padding-top: 8px">
 
-Just want to try it out? Skip to the [Quickstart](./getting-started).
+Just want to try it out? Skip to the [Quickstart](./getting-started.md).
 
 </div>
 
