@@ -4,6 +4,8 @@ export default defineConfig({
   lang: 'en-US',
   title: "🦚 venüstre.io",
   description: "A simple and zero-dependencies library to create and manage routines, schedule execution time, and control competition between other processes.",
+  cleanUrls: true,
+  ignoreDeadLinks: true,
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
