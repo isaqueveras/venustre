@@ -4,7 +4,7 @@ This section will be used to list the implementations of the interfaces made by 
 
 > If you created a library implementing the interface, please open a [pull request](https://github.com/isaqueveras/venustre/pulls) in the repository updating the list on this page.
 
-## Implementation of the IVenustre interface
+## Implementation of the Engine interface
 
 Session intended only for libraries that implement the main interface that controls the execution of routines.
 

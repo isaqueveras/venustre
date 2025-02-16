@@ -5,7 +5,7 @@ To create your own implementation of the main interface, you must be aware of ho
 ## Implementation of the main interface
 
 ```go
-type IVenustre interface {
+type Engine interface {
   Go(fn func() error)
   Wait() error
 
