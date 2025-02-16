@@ -1,4 +1,4 @@
-package outis
+package venustre
 
 import "time"
 
@@ -54,6 +54,6 @@ func Logger(logger ILogger) WatcherOption {
 }
 
 // Impl defines the implementation of the main interface
-func Impl(outis IOutis) WatcherOption {
-	return func(watch *Watch) { watch.outis = outis }
+func Impl(engine Engine) WatcherOption {
+	return func(watch *Watch) { watch.engine = engine }
 }

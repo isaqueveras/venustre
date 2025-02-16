@@ -1,4 +1,4 @@
-package outis
+package venustre
 
 import (
 	"context"
@@ -74,7 +74,7 @@ func (ctx *Context) Metadata(key string, args interface{}) {
 }
 
 func (ctx *Context) metrics(w *Watch, now time.Time) {
-	w.outis.Event(ctx, EventMetric{
+	w.engine.Event(ctx, EventMetric{
 		ID:         ctx.Id.ToString(),
 		StartedAt:  now,
 		FinishedAt: time.Now(),

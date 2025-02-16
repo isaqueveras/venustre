@@ -1,10 +1,10 @@
-package outis
+package venustre
 
 // Event sets the type for the event structure
 type Event interface{}
 
-// IOutis is the main interface for implementing the outis lib.
-type IOutis interface {
+// Engine is the main interface for implementing the venustre lib.
+type Engine interface {
 	Go(fn func() error)
 	Wait() error
 

@@ -1,4 +1,4 @@
-package outis
+package venustre
 
 // retry allowes a given method to be retried x amount of times.
 type retry struct{ amount, retries int8 }

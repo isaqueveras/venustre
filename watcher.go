@@ -1,4 +1,4 @@
-package outis
+package venustre
 
 import (
 	"context"
@@ -25,18 +25,18 @@ type Watch struct {
 	Name  string    `json:"name"`
 	RunAt time.Time `json:"run_at"`
 
-	outis IOutis
-	log   ILogger
+	engine Engine
+	log    ILogger
 }
 
 // Watcher initializes a new watcher
 func Watcher(id, name string, opts ...WatcherOption) *Watch {
 	watch := &Watch{
-		Id:    ID(id),
-		Name:  name,
-		log:   setupLogger(),
-		outis: newOutis(),
-		RunAt: time.Now(),
+		Id:     ID(id),
+		Name:   name,
+		log:    setupLogger(),
+		engine: newEngine(),
+		RunAt:  time.Now(),
 	}
 
 	for _, opt := range opts {
@@ -48,7 +48,7 @@ func Watcher(id, name string, opts ...WatcherOption) *Watch {
 
 // Wait method responsible for keeping routines running
 func (watch *Watch) Wait() {
-	if err := watch.outis.Wait(); err != nil {
+	if err := watch.engine.Wait(); err != nil {
 		watch.log.Errorf("%s", err.Error())
 		return
 	}
@@ -66,7 +66,7 @@ func Wait() {
 
 // Go create a new routine in the watcher
 func (watch *Watch) Go(opts ...Option) {
-	watch.outis.Go(func() error {
+	watch.engine.Go(func() error {
 		ctx := &Context{
 			indicator: make([]*indicator, 0),
 			metadata:  make(Metadata),
@@ -89,7 +89,7 @@ func (watch *Watch) Go(opts ...Option) {
 		file, line := info.FileLine(info.Entry())
 		ctx.Path = fmt.Sprintf("%s:%v", file, line)
 
-		if err := watch.outis.Init(ctx); err != nil {
+		if err := watch.engine.Init(ctx); err != nil {
 			return err
 		}
 
@@ -126,7 +126,7 @@ func (ctx *Context) execute() error {
 		}
 	}()
 
-	if err := ctx.Watcher.outis.Before(ctx); err != nil {
+	if err := ctx.Watcher.engine.Before(ctx); err != nil {
 		return err
 	}
 
@@ -135,7 +135,7 @@ func (ctx *Context) execute() error {
 	}
 
 	ctx.latency = time.Since(now)
-	if err := ctx.Watcher.outis.After(ctx); err != nil {
+	if err := ctx.Watcher.engine.After(ctx); err != nil {
 		return err
 	}
 
