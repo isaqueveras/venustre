@@ -29,30 +29,13 @@ type Watch struct {
 	log    ILogger
 }
 
-// Watcher initializes a new watcher
-func Watcher(id, name string, opts ...WatcherOption) *Watch {
-	watch := &Watch{
-		Id:     ID(id),
-		Name:   name,
-		log:    setupLogger(),
-		engine: newEngine(),
-		RunAt:  time.Now(),
-	}
-
-	for _, opt := range opts {
-		opt(watch)
-	}
-
-	return watch
-}
-
 // Wait method responsible for keeping routines running
-func (watch *Watch) Wait() {
-	if err := watch.engine.Wait(); err != nil {
-		watch.log.Errorf("%s", err.Error())
-		return
-	}
-}
+// func (e *Enginex) Wait() {
+// if err := watch.engine.Wait(); err != nil {
+// 	watch.log.Errorf("%s", err.Error())
+// 	return
+// }
+// }
 
 // Wait responsible for keeping routines running
 func Wait() {

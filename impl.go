@@ -9,8 +9,6 @@ import (
 
 type engine struct{}
 
-func newEngine() Engine { return &engine{} }
-
 func (engine) Go(fn func() error) { fn() }
 func (engine) Wait() error        { return nil }
 
