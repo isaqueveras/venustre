@@ -1,3 +1,3 @@
-module github.com/isaqueveras/venustre
+module github.com/isaqueveras/venustre/v2
 
-go 1.18
+go 1.23
