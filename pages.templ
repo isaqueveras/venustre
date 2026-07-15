@@ -1,0 +1,39 @@
+package venustre
+
+templ page(title string) {
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>{title} - Venustre</title>
+    </head>
+    <body>
+      { children... }
+    </body>
+  </html>
+}
+
+templ dashboardPage() {
+  @page("Dashboard") {
+    <h1>Dashboard</h1>
+  }
+}
+
+templ tasksPage() {
+  @page("Tasks") {
+    <h1>List of tasks</h1>
+  }
+}
+
+templ tasksDetailsPage(id string) {
+  @page("Tasks of id #"+id) {
+    <h1>Tasks of id #{id}</h1>
+  }
+}
+
+templ errorPage(message string) {
+  @page("Error") {
+    <h1>Error page</h1>
+    <p>{message}</p>
+  }
+}
